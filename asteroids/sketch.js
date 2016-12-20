@@ -19,7 +19,9 @@ function setup() {
   frameRate(60);
   song = loadSound("spacemix.mp3", function() { 
     song.setVolume(0.1);
-    song.loop(); 
+    if (music) {
+      song.loop();
+    }
   });
   bg = new Background(200);
   reset();
