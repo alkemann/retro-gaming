@@ -6,7 +6,6 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
       DRAG = 0.975;
 
   obj = {
-    vel: sourceVel || p5.Vector.random2D(),
     r: sourceRadius || random(MIN_START_SIZE, MAX_SIZE),
     orientation: 0,
     offsets: []
@@ -14,17 +13,23 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
 
   var max_rotate_speed = map(obj.r, 1, MAX_SIZE, 0.04, 0.0001);
   obj.rot_speed = random(-1*max_rotate_speed, max_rotate_speed);
+
   if (sourcePos) {
     obj.pos = sourcePos.copy();
   } else {
     do {
       obj.pos = createVector(random(width), random(height));
-    } while (obj.pos.dist(ship.pos) < (ship.pos.r + obj.r + 50));
+    } while (obj.pos.dist(ship.pos) < 100);
   }
-  // TODO ensure not starting near ship headed straight for it?
-  // maybe create a normalized vector based on diff between shop and
-  // asteroid object, but angling the two asteroids some degrees from that
 
+  if (sourceVel) {
+    obj.vel = sourceVel;
+  } else {
+    obj.vel = createVector(ship.pos.x-obj.pos.x, ship.pos.y-obj.pos.y);
+    obj.vel.normalize();
+    obj.vel.mult(-1);
+    obj.vel.rotate(random(-1, 1))
+  }
 
   var speed_size_adjust = map(obj.r, MAX_SIZE, MIN_SIZE, 0.25, 2),
       speed_random_adjust = random(0.6, 0.8),
@@ -46,11 +51,16 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
     var out = [],
       newPos1 = this.pos.copy(),
       newPos2 = this.pos.copy(),
-      newAngle1 = p5.Vector.random2D(),
-      newAngle2 = p5.Vector.random2D();
+      newAngle1 = createVector(ship.pos.x-this.pos.x, ship.pos.y-this.pos.y),
+      newAngle2 = createVector(ship.pos.x-this.pos.x, ship.pos.y-this.pos.y);
 
-    newAngle1.mult(2.5);
-    newAngle2.mult(2.5);
+
+    newAngle1.normalize();
+    newAngle1.mult(-3);
+    newAngle1.rotate(random(0.1, 1));
+    newAngle2.normalize();
+    newAngle2.rotate(random(-0.1, -1));
+    newAngle2.mult(-3);
 
     newPos1.add(newAngle1);
     newPos2.add(newAngle2);
