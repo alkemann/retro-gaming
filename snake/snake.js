@@ -15,10 +15,10 @@ function Snake(MODE) {
           return this;
         },
         render: function() {
-          Views.block(pos2cord(this.pos));
           for (var i = this.tail.length - 1; i >= 0; i--) {
-            Views.block(pos2cord(this.tail[i]));
+            Views.block(pos2cord(this.tail[i]), COLORS.TAIL);
           }
+          Views.block(pos2cord(this.pos), COLORS.HEAD);
         }
       }
   ;

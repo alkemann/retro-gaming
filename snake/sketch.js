@@ -1,6 +1,5 @@
-var snake, blocks = [],
-    score = 0, hiscore = 0, level = 0,
-    deltaTime = 0, lastFrame = 0,
+var snake, game = {score: 0},
+    hiscore = 0, deltaTime = 0, lastFrame = 0,
     state = "PLAY",
     DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
@@ -31,6 +30,7 @@ function draw() {
   rect(CONF.PLAY.X, CONF.PLAY.Y, CONF.PLAY.SIZE, CONF.PLAY.SIZE);
 
   if (state == "PLAY") {
+    game.check();
     snake.update();
     Views.play();
   } else if (state == "START") {
@@ -45,16 +45,11 @@ function draw() {
 }
 
 function reset() {
-  hiscore = hiscore > score ? hiscore : score;
-  score = 0;
+  hiscore = hiscore > game.score ? hiscore : game.score;
   snake = new Snake();
   level = 0
-  next_level();
-}
-
-function next_level() {
-  level += 1;
-  blocks = [new Block()];
+  game = new Game();
+  game.next_level();
 }
 
 function keyPressed() {
@@ -93,17 +88,7 @@ function keyPressed() {
   */
   return false;
 }
-/*
-function keyReleased() {
-  if (keyCode === UP_ARROW) {
-  }
-  if (keyCode === LEFT_ARROW) {
-  }
-  if (keyCode === RIGHT_ARROW) {
-  }
-  return false;
-}
-*/
+
 function pos2cord(pos) {
   return {
     x: CONF.PLAY.X + (pos.x * CONF.SNAKE.SIZE),

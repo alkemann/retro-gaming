@@ -1,16 +1,22 @@
-var Views = {
+var 
+    COLORS = {
+        RED: [250, 40, 40],
+        HEAD: [100, 250, 100],
+        TAIL: [50, 180, 50]
+    },
+    Views = {
   play: function() {
     snake.render();
-    for (var i = 0; i < blocks.length; i++) {
-        blocks[i].render();
+    for (var i = 0; i < game.blocks.length; i++) {
+        game.blocks[i].render();
     }
     push();
     textSize(20);
     noStroke();
     fill(230);
-    text("SCORE: " + score, 20, 20);
+    text("SCORE: " + game.score, 20, 20);
     textAlign(CENTER);
-    text(level, width/2, 20);
+    text(game.level, width/2, 20);
     textAlign(RIGHT);
     text("HI-SCORE: " + hiscore, width - 20, 20);
     pop();
@@ -34,6 +40,9 @@ var Views = {
 
   pause: function() {
     snake.render();
+    for (var i = 0; i < game.blocks.length; i++) {
+        game.blocks[i].render();
+    }
     push();
     textSize(40);
     stroke(50);
@@ -47,6 +56,7 @@ var Views = {
   },
 
   game_over: function() {
+    var score = game.score
     push();
     noStroke();
     fill(230);
@@ -70,7 +80,7 @@ var Views = {
     translate(cord.x, cord.y);
     noStroke();
     if (color) {
-        fill(240, 200, 200);
+        fill(color[0], color[1], color[2]);
     } else {
         fill(220);
     }
