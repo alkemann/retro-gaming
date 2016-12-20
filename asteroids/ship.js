@@ -1,15 +1,9 @@
 function Ship() {
-  var ROT_POWER = 0.095,
-      THRUST_POWER = 0.75,
-      DRAG = 0.99,
-      FORCE_LIMITER = 0.35,
-      MAX_WARP = 5,
-      SIZE = 35
-      obj = {
+  var obj = {
     heading: 0,
     vel: createVector(0,0),
     pos: createVector(width/2, height/2),
-    r: SIZE,
+    r: CONF.SHIP.SIZE,
     rotLeft: 0,
     rotRight: 0,
     warp: false,
@@ -17,8 +11,8 @@ function Ship() {
 
     engage: function() {this.warp = true;},
     halt: function() {this.warp = false;},
-    turnLeft: function() {this.rotLeft = ROT_POWER * -1;},
-    turnRight: function() {this.rotRight = ROT_POWER;},
+    turnLeft: function() {this.rotLeft = CONF.SHIP.ROT_POWER * -1;},
+    turnRight: function() {this.rotRight = CONF.SHIP.ROT_POWER;},
     stopTurningLeft: function() {this.rotLeft = 0;},
     stopTurningRight: function() {this.rotRight = 0;},
 
@@ -30,12 +24,12 @@ function Ship() {
       rot = this.rotLeft + this.rotRight;
       this.heading += rot;
       this.rot = 0;
-      if (this.warp && this.vel.mag() < MAX_WARP) {
+      if (this.warp && this.vel.mag() < CONF.SHIP.MAX_WARP) {
         var force = p5.Vector.fromAngle(this.heading);
-        force.mult(FORCE_LIMITER);
+        force.mult(CONF.SHIP.FORCE_LIMITER);
         this.vel.add(force);
       }
-      this.vel.mult(DRAG);
+      this.vel.mult(CONF.SHIP.DRAG);
       this.pos.add(this.vel);
       this.edge();
 

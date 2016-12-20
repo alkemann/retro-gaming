@@ -2,9 +2,20 @@ var ship, bg, asteroids = [],
     score = 0, hiscore = 0, level = 0,
     state = "START",
     song, music = true;
+    CONF = {
+      WIDTH: 720, HEIGHT: 540,
+      SHIP: {
+        ROT_POWER: 0.085,
+        THRUST_POWER: 0.75,
+        DRAG: 0.99,
+        FORCE_LIMITER: 0.35,
+        MAX_WARP: 5,
+        SIZE: 23
+      }
+    };
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(CONF.WIDTH, CONF.HEIGHT);
   frameRate(60);
   song = loadSound("spacemix.mp3", function() { 
     song.setVolume(0.1);
