@@ -69,8 +69,24 @@ function Ship() {
       push();
       translate(x, y);
       rotate((PI/2) + this.heading);
-      r = this.r;
-      triangle(0, -r, r, r, -r, r);
+      var r = this.r,
+          t = r/5;
+
+      fill(255);
+      beginShape();
+      vertex(0, -r);
+      vertex(r, r);
+      vertex(t, t);
+      vertex(-t, t);
+      vertex(-r, r);
+
+      endShape(CLOSE);
+      fill(0);
+      triangle(0, -r-3, t, -3, -t, -3);
+      if (this.warp) {
+        fill(50,0, 0)
+        triangle(0, r, t, t, -t, t);
+      }
       pop();
     },
 
