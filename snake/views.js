@@ -6,6 +6,7 @@ var
     },
     Views = {
   play: function() {
+    rect(CONF.PLAY.X, CONF.PLAY.Y, CONF.PLAY.SIZE, CONF.PLAY.SIZE);
     snake.render();
     for (var i = 0; i < game.blocks.length; i++) {
         game.blocks[i].render();
@@ -39,10 +40,8 @@ var
   },
 
   pause: function() {
+    rect(CONF.PLAY.X, CONF.PLAY.Y, CONF.PLAY.SIZE, CONF.PLAY.SIZE);
     snake.render();
-    for (var i = 0; i < game.blocks.length; i++) {
-        game.blocks[i].render();
-    }
     push();
     textSize(40);
     stroke(50);

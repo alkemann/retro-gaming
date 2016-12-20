@@ -1,6 +1,6 @@
 var snake, game = {score: 0},
     hiscore = 0, deltaTime = 0, lastFrame = 0,
-    state = "PLAY",
+    state = "START",
     DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
       WIDTH: 720, HEIGHT: 540,
@@ -27,7 +27,6 @@ function draw() {
   fill(0);
   noStroke();
   textFont("Arial");
-  rect(CONF.PLAY.X, CONF.PLAY.Y, CONF.PLAY.SIZE, CONF.PLAY.SIZE);
 
   if (state == "PLAY") {
     game.check();
