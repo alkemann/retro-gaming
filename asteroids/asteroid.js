@@ -8,9 +8,12 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
   obj = {
     vel: sourceVel || p5.Vector.random2D(),
     r: sourceRadius || random(MIN_START_SIZE, MAX_SIZE),
+    orientation: 0,
     offsets: []
   }
 
+  var max_rotate_speed = map(obj.r, 1, MAX_SIZE, 0.04, 0.0001);
+  obj.rot_speed = random(-1*max_rotate_speed, max_rotate_speed);
   if (sourcePos) {
     obj.pos = sourcePos.copy();
   } else {
@@ -87,6 +90,7 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
     if (this.vel.mag() > this.speed) {
       this.vel.mult(DRAG);
     }
+    this.orientation += this.rot_speed;
     this.edge();
     return this;
   }
@@ -100,6 +104,7 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
     push();
     fill(0);
     translate(x, y);
+    rotate(this.orientation);
     beginShape();
     for (var i = 0; i < VERTS; i++) {
       var angle = map(i, 0, VERTS, 0, TWO_PI),
