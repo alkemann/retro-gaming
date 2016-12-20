@@ -1,6 +1,6 @@
 var ship, bg, asteroids = [], 
     score = 0, hiscore = 0, level = 0,
-    state = "START",
+    state = "START", turbo = false,
     song, music = true;
     CONF = {
       WIDTH: 720, HEIGHT: 540,
