@@ -1,20 +1,21 @@
 var ship, bg, asteroids = [], 
     score = 0, hiscore = 0, level = 0,
-    state = "START", turbo = false,
+    state = "START", turbo = true,
     song, music = true,
     deltaTime = 0, lastFrame = 0,
     CONF = {
       WIDTH: 720, HEIGHT: 540,
       MISSILE: {
-        SPEED: 15,
+        SPEED: 25,
         RANGE: 300,
+        SIZE: 5,
       },
       SHIP: {
         ROT_POWER: 0.085,
         THRUST_POWER: 0.75,
         DRAG: 0.99,
         FORCE_LIMITER: 0.35,
-        MAX_WARP: 2,
+        MAX_WARP: 5,
         SIZE: 23,
         RELOAD_SPEED: 5
       }
@@ -163,7 +164,6 @@ function keyPressed() {
 function keyReleased() {
   if (key == ' ') {
     ship.stopShooting();
-    console.log('SPACE LET GO');
   }
   if (keyCode === UP_ARROW) {
     ship.halt();

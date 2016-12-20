@@ -6,7 +6,7 @@ function Missile(ship) {
     cb: random(50, 155),
     angle: p5.Vector.fromAngle(ship.heading),
     travelled: 0,
-    r: 4
+    r: CONF.MISSILE.SIZE
   };
 
   // obj.angle.add(ship.vel); // @TODO adjust for speed of ship
