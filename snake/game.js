@@ -25,7 +25,7 @@ function Game() {
       }
     }
     if (hit_block) {
-      this.score += hit_block.reward * snake.tail.length;
+      this.score += hit_block.reward * snake.tail.length * CONF.SNAKE.SPEED;
       snake.grow += Math.floor(this.level / 3);
     }
     if (this.blocks.length === 0) {
