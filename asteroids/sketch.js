@@ -5,15 +5,15 @@ var ship, bg, asteroids = [],
     CONF = {
       WIDTH: 720, HEIGHT: 540,
       MISSILE: {
-        SPEED: 25,
-        RANGE: 400,
+        SPEED: 15,
+        RANGE: 300,
       },
       SHIP: {
         ROT_POWER: 0.085,
         THRUST_POWER: 0.75,
         DRAG: 0.99,
         FORCE_LIMITER: 0.35,
-        MAX_WARP: 5,
+        MAX_WARP: 2,
         SIZE: 23
       }
     };
@@ -141,6 +141,16 @@ function keyPressed() {
     music = !music;
     if (music) song.loop();
     else song.stop();
+  }
+  if (key == 'T') {
+    turbo = !turbo;
+    if (turbo) {
+      CONF.MISSILE.SPEED = 25;
+      CONF.SHIP.MAX_WARP = 5;
+    } else {
+      CONF.MISSILE.SPEED = 15;
+      CONF.SHIP.MAX_WARP = 2;
+    }
   }
   return false;
 }
