@@ -6,6 +6,8 @@ function Ship() {
     r: CONF.SHIP.SIZE,
     rotLeft: 0,
     rotRight: 0,
+    reloading: 0,
+    shooting: false,
     warp: false,
     missiles: [],
 
@@ -15,12 +17,19 @@ function Ship() {
     turnRight: function() {this.rotRight = CONF.SHIP.ROT_POWER;},
     stopTurningLeft: function() {this.rotLeft = 0;},
     stopTurningRight: function() {this.rotRight = 0;},
+    startShooting: function() {this.shooting = true;},
+    stopShooting: function() {this.shooting = false;},
 
     shoot: function() {
-      this.missiles.push(new Missile(this));
+      if (this.reloading <= 0) {
+        this.missiles.push(new Missile(this));
+        this.reloading = 1;
+      }
     },
 
     update: function() {
+      this.reloading -= deltaTime * CONF.SHIP.RELOAD_SPEED;
+      if (this.shooting) this.shoot();
       rot = this.rotLeft + this.rotRight;
       this.heading += rot;
       this.rot = 0;
