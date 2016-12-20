@@ -15,6 +15,7 @@ function Missile(ship) {
   obj.update = function() {
     this.travelled += this.angle.mag();
     this.pos.add(this.angle);
+    this.edge();
   }
 
   obj.render = function() {
