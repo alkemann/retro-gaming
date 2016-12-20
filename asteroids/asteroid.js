@@ -35,8 +35,6 @@ function Asteroid(sourcePos, sourceRadius, sourceVel) {
       speed_random_adjust = random(0.6, 0.8),
       speed_adjust = speed_random_adjust + speed_size_adjust;
 
-  // TODO more speed for smaller rocks
-
   obj.speed = speed_adjust;
   obj.vel.mult(speed_adjust);
   var o = obj.r / 4;

@@ -4,6 +4,10 @@ var ship, bg, asteroids = [],
     song, music = true;
     CONF = {
       WIDTH: 720, HEIGHT: 540,
+      MISSILE: {
+        SPEED: 25,
+        RANGE: 400,
+      },
       SHIP: {
         ROT_POWER: 0.085,
         THRUST_POWER: 0.75,

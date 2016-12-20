@@ -1,7 +1,4 @@
 function Missile(ship) {
-  var SPEED = 25,
-      RANGE = 400;
-
   obj = {
     pos: createVector(ship.pos.x, ship.pos.y),
     cr: 255,
@@ -13,7 +10,7 @@ function Missile(ship) {
   };
 
   // obj.angle.add(ship.vel); // @TODO adjust for speed of ship
-  obj.angle.mult(SPEED);
+  obj.angle.mult(CONF.MISSILE.SPEED);
 
   obj.update = function() {
     this.travelled += this.angle.mag();
@@ -29,8 +26,9 @@ function Missile(ship) {
   }
 
   obj.expired = function() {
-    return this.travelled >= RANGE;
+    return this.travelled >= CONF.MISSILE.RANGE;
   }
 
+  obj.__proto__ = base_object;
   return obj;
 }
