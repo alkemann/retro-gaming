@@ -1,23 +1,12 @@
-var snake,
+var snake, blocks = [],
     score = 0, hiscore = 0, level = 0,
-    deltaTime = 0,
-    lastFrame = 0,
+    deltaTime = 0, lastFrame = 0,
     state = "PLAY",
-    DIR = {
-      UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"
-    },
+    DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
-      WIDTH: 720,
-      HEIGHT: 540,
-      SNAKE: {
-        SIZE: 25,
-        SPEED: 4
-      },
-      PLAY: {
-        X: 110,
-        Y: 30,
-        SIZE: 500,
-      }
+      WIDTH: 720, HEIGHT: 540,
+      SNAKE: { SIZE: 25, SPEED: 20 },
+      PLAY: { X: 110, Y: 30, SIZE: 500}
     }
 ;
 CONF.BOARD = {
@@ -42,6 +31,7 @@ function draw() {
   rect(CONF.PLAY.X, CONF.PLAY.Y, CONF.PLAY.SIZE, CONF.PLAY.SIZE);
 
   if (state == "PLAY") {
+    snake.update();
     Views.play();
   } else if (state == "START") {
     Views.start();
@@ -64,6 +54,7 @@ function reset() {
 
 function next_level() {
   level += 1;
+  blocks = [new Block()];
 }
 
 function keyPressed() {
@@ -113,3 +104,9 @@ function keyReleased() {
   return false;
 }
 */
+function pos2cord(pos) {
+  return {
+    x: CONF.PLAY.X + (pos.x * CONF.SNAKE.SIZE),
+    y: CONF.PLAY.Y + (pos.y * CONF.SNAKE.SIZE)
+  }
+}

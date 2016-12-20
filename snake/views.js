@@ -1,6 +1,9 @@
 var Views = {
   play: function() {
-    snake.update().render();
+    snake.render();
+    for (var i = 0; i < blocks.length; i++) {
+        blocks[i].render();
+    }
     push();
     textSize(20);
     noStroke();
@@ -60,6 +63,19 @@ var Views = {
     text("PRESS <ENTER> TO RESTART", width/2, (height/6)*5);
     pop();
     this.music();
+  },
+
+  block: function(cord, color) {
+    push();
+    translate(cord.x, cord.y);
+    noStroke();
+    if (color) {
+        fill(240, 200, 200);
+    } else {
+        fill(220);
+    }
+    rect(0, 0, CONF.SNAKE.SIZE, CONF.SNAKE.SIZE);
+    pop();
   },
 
   music: function() {
