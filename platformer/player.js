@@ -3,6 +3,7 @@ function Player() {
 
   this.__proto__ = new Movement();
   this.pos = createVector(50, CONF.GROUND - 2);
+  this.double = false;
   this.update = function() {
     if (this.moveLeft) {
       this.pos.x -= CONF.PLAYER.SPEED;
@@ -15,6 +16,9 @@ function Player() {
     }
     if (this.pos.x > CONF.WIDTH-(CONF.PLAYER.WIDTH/2)) {
       this.pos.x = CONF.WIDTH-(CONF.PLAYER.WIDTH/2);
+    }
+    if (this.pos.y == CONF.GROUND) {
+      this.double = false;
     }
     this.move();
   };
@@ -31,7 +35,13 @@ function Player() {
     pop();
   };
   this.up = function() {
-    if (this.pos.y < CONF.GROUND - 2) return; // No double jump!
+    if (this.pos.y < CONF.GROUND - 2) {
+      if (this.double || CONF.PLAYER.DOUBLE_JUMP == false) {
+        return; // No more double jump!
+      } else {
+        this.double = true;
+      }
+    }
     this.applyForce(createVector(0, -1 * CONF.PLAYER.JUMP));
   };
   this.startRight = function() {
@@ -61,7 +71,6 @@ function Movement() {
       // this.vel.mult(CONF.DRAG);
 
       // add gravity to acc
-
       if (this.pos.y <= CONF.GROUND) {
         this.acc.add(createVector(0, CONF.GRAVITY));
       } else {

@@ -9,6 +9,7 @@ var state = "PLAY",
         WIDTH: 30, HEIGHT: 60,
         SPEED: 10,
         JUMP: 450, // Jump power, pixels over 1 second
+        DOUBLE_JUMP: false,
       }
     },
 
