@@ -4,12 +4,12 @@ function Snake(MODE) {
         grow: 0,
         timer: 0,
         pos: {x: 6, y: 6},
-        dir: DIR.RIGHT,
+        dir: null,
         tail: [],
         reset: function(pos) {
           this.grow = 0;
           this.timer = 0;
-          this.dir = DIR.RIGHT;
+          this.dir = null;
           this.pos = pos ? pos.copy() : {x: 6, y: 6};
           this.tail = [];
         },
@@ -33,16 +33,20 @@ function Snake(MODE) {
   // @TODO switch on MODE
   ss.move = {
     up: function() {
-      ss.dir = DIR.UP;
+      if (ss.dir != DIR.DOWN)
+        ss.dir = DIR.UP;
     },
     down: function() {
-      ss.dir = DIR.DOWN;
+      if (ss.dir != DIR.UP)
+        ss.dir = DIR.DOWN;
     },
     left: function() {
-      ss.dir = DIR.LEFT;
+      if (ss.dir != DIR.RIGHT)
+        ss.dir = DIR.LEFT;
     },
     right: function() {
-      ss.dir = DIR.RIGHT;
+      if (ss.dir != DIR.LEFT)
+        ss.dir = DIR.RIGHT;
     },
     update: function() {
       var prev_x = ss.pos.x, prev_y = ss.pos.y;
