@@ -3,14 +3,14 @@ function Snake(MODE) {
       ss = {
         grow: 0,
         timer: 0,
-        pos: {x: 5, y: 5},
+        pos: {x: 6, y: 6},
         dir: DIR.RIGHT,
         tail: [],
         reset: function(pos) {
           this.grow = 0;
           this.timer = 0;
           this.dir = DIR.RIGHT;
-          this.pos = {x: 5, y: 5}
+          this.pos = pos.copy();
           this.tail = [];
         },
         update: function() {
