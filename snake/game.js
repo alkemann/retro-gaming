@@ -68,7 +68,11 @@ function Game() {
       this.current_level.fruit_left -= 1;
       this.score += hit_block.reward * snake.tail.length * CONF.SNAKE.SPEED;
       snake.grow += Math.floor(this.level / 3);
+      if (this.current_level.fruit_left == 0) {
+        this.next_level();
+      }
     }
+
     for (var i = 0; i < snake.tail.length; i++) {
       var p = snake.tail[i];
       if (p.x == snake.pos.x && p.y == snake.pos.y) {
@@ -76,11 +80,9 @@ function Game() {
         return; // no need to continue, game over
       }
     }
-    if (this.current_level.fruit_left == 0) {
-      this.next_level();
-    }
     for (var i = 0; i < this.current_level.walls.length; i++) {
       if (this.current_level.walls[i].check()) {
+        state = 'READY';
         this.over();
         return; // game over
       }

@@ -5,12 +5,10 @@ function Level(walls, fruits, start) {
     fruit_left: fruits.length,
     walls: walls,
     reset: function() {
-      fruit_left = this.fruits.length;
+      this.fruit_left = this.fruits.length;
       for (var i = 0; i < this.fruits.length; i++) {
         this.fruits[i].reset();
-        console.log("reset fruit");
       }
-      console.log(this);
     },
     render: function() {
       for (var i = 0; i < this.walls.length; i++) {
