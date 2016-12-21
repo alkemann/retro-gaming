@@ -12,9 +12,9 @@ var
         noStroke();
         fill(230);
         rect(0, CONF.GROUND, CONF.WIDTH, 5);
-        text("SCORE: " + score, 20, 20);
+        text("JUMP POWER", 20, 20);
         textAlign(RIGHT);
-        text("HI-SCORE: " + hiscore, width - 20, 20);
+        text("GRAVITY", width - 20, 20);
         pop();
         this.music();
       },

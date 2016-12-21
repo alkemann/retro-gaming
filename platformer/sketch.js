@@ -4,12 +4,15 @@ var state = "PLAY",
     DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
       WIDTH: 720, HEIGHT: 540, GROUND: 520,
-      DRAG: 0.985, GRAVITY: 9.8,
+      DRAG: 0.985, GRAVITY: 25,
       PLAYER: {
-        WIDTH: 10, HEIGHT: 30,
-        JUMP: 250, // Jump power, pixels over 1 second
+        WIDTH: 30, HEIGHT: 60,
+        SPEED: 10,
+        JUMP: 450, // Jump power, pixels over 1 second
       }
-    }
+    },
+
+    jumpSlider, gavitySlider
 ;
 
 
@@ -18,6 +21,11 @@ function setup() {
   frameRate(60);
   lastFrame = millis();
   player = new Player();
+
+  jumpSlider = createSlider(100, 900, CONF.PLAYER.JUMP);
+  jumpSlider.position(20, 40);
+  gravitySlider = createSlider(0, 100, CONF.GRAVITY);
+  gravitySlider.position(600, 40);
 }
 
 function draw() {
@@ -27,6 +35,9 @@ function draw() {
   fill(0);
   noStroke();
   textFont("Arial");
+
+  CONF.PLAYER.JUMP = jumpSlider.value();
+  CONF.GRAVITY = gravitySlider.value();
 
   if (state == "PLAY") {
     player.update();
