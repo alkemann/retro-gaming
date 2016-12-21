@@ -10,7 +10,7 @@ function Snake(MODE) {
           this.grow = 0;
           this.timer = 0;
           this.dir = DIR.RIGHT;
-          this.pos = pos.copy();
+          this.pos = pos ?pos.copy() : {x: 6, y: 6};
           this.tail = [];
         },
         update: function() {
