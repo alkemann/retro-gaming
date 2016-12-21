@@ -1,4 +1,4 @@
-var 
+var
     COLORS = {
         RED: [250, 40, 40],
         HEAD: [100, 250, 100],
@@ -15,7 +15,7 @@ var
     fill(230);
     text("SCORE: " + game.score, 20, 20);
     textAlign(CENTER);
-    text(game.level, width/2, 20);
+    text(game.level + 1, width/2, 20);
     textAlign(RIGHT);
     text("HI-SCORE: " + hiscore, width - 20, 20);
     pop();
