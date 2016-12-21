@@ -3,13 +3,13 @@ var state = "PLAY",
     score = 0, hiscore = 0,
     DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
-      WIDTH: 720, HEIGHT: 540, GROUND: 520,
-      DRAG: 0.985, GRAVITY: 25,
+      WIDTH: 720, HEIGHT: 540,
+      GRAVITY: 25,
       PLAYER: {
         WIDTH: 30, HEIGHT: 60,
-        SPEED: 10,
+        SPEED: 6,
         JUMP: 450, // Jump power, pixels over 1 second
-        DOUBLE_JUMP: false,
+        DOUBLE_JUMP: true,
       }
     },
 
@@ -29,9 +29,10 @@ function setup() {
   gravitySlider.position(600, 40);
 
   platforms = [
-    new Platform(0, CONF.GROUND, 550, 5),
-    // new Platform(600, 480, 119, 40),
-    // new Platform(200, 400, 50, 5)
+    new Platform(0, 520, 550, 5),
+    new Platform(600, 480, 119, 40),
+    new Platform(200, 400, 50, 5),
+    new Platform(400, 400, 50, 5)
   ];
 
 }

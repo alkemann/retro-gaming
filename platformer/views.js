@@ -14,9 +14,6 @@ var
         text("JUMP POWER", 20, 20);
         textAlign(RIGHT);
         text("GRAVITY", width - 20, 20);
-        noFill();
-        stroke(230, 230, 230, 100);
-        line(0, CONF.GROUND, CONF.WIDTH, CONF.GROUND);
         pop();
         for (var i = 0; i < platforms.length; i++) {
             platforms[i].render();
@@ -50,6 +47,9 @@ var
         textSize(20);
         text("PRESS <ESC> TO RESUME", width/2, (height/2)+10);
         pop();
+        for (var i = 0; i < platforms.length; i++) {
+            platforms[i].render();
+        }
         this.music();
       },
 
