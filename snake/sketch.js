@@ -32,6 +32,8 @@ function draw() {
     game.check();
     snake.update();
     Views.play();
+  } else if (state == "READY") {
+    Views.play();
   } else if (state == "START") {
     Views.start();
   } else if (state == "PAUSE") {
@@ -52,18 +54,21 @@ function reset() {
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    snake.move.up();
-  } else if (keyCode === DOWN_ARROW) {
-    snake.move.down();
-  } else if (keyCode === LEFT_ARROW) {
-    snake.move.left();
-  } else if (keyCode === RIGHT_ARROW) {
-    snake.move.right();
+  if (state == "PLAY" || state == "READY") {
+    state = "PLAY";
+    if (keyCode === UP_ARROW) {
+      snake.move.up();
+    } else if (keyCode === DOWN_ARROW) {
+      snake.move.down();
+    } else if (keyCode === LEFT_ARROW) {
+      snake.move.left();
+    } else if (keyCode === RIGHT_ARROW) {
+      snake.move.right();
+    }
   }
 
   if (key == ' ' && state == "START") {
-    state = "PLAY";
+    state = "READY";
   } else if (key == ' ' && state == "PLAY") {
     snake.grow += 1;
   }
