@@ -3,9 +3,13 @@ function Snake(MODE) {
       ss = {
         grow: 0,
         timer: 0,
-        pos: createVector(4, 1),
+        pos: createVector(10, 10),
         dir: DIR.RIGHT,
         tail: [],
+        reset: function() {
+          this.pos = createVector(10, 10);
+          this.tail = [];
+        },
         update: function() {
           this.timer += CONF.SNAKE.SPEED * deltaTime;
           if (this.timer >= 1) {
