@@ -22,7 +22,7 @@ function Game() {
           } else if (od.type == "fruit") {
             fruits.push(new Fruit(1, createVector(od.x, od.y)));
           } else { // assume od.type == "wall"
-            walls[j] = new Wall(od.x, od.y, od.width, od.height);
+            walls.push(new Wall(od.x, od.y, od.width, od.height));
           }
         }
         g.levels[data.layers[i].name] = new Level(walls, fruits, start_pos);
