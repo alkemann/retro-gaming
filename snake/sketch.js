@@ -93,7 +93,7 @@ function keyPressed() {
 
   if (keyCode === ENTER && state == "END") {
     reset();
-    state = "PLAY";
+    state = "READY";
   }
   /*
   if (key == 'M') {
