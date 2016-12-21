@@ -5,19 +5,29 @@ function Player() {
   this.pos = createVector(50, CONF.GROUND - 2);
   this.update = function() {
     if (this.moveLeft) {
-      this.pos.x -= 5;
+      this.pos.x -= CONF.PLAYER.SPEED;
     }
     if (this.moveRight) {
-      this.pos.x += 5;
+      this.pos.x += CONF.PLAYER.SPEED;
+    }
+    if (this.pos.x < (CONF.PLAYER.WIDTH/2)) {
+      this.pos.x = (CONF.PLAYER.WIDTH/2);
+    }
+    if (this.pos.x > CONF.WIDTH-(CONF.PLAYER.WIDTH/2)) {
+      this.pos.x = CONF.WIDTH-(CONF.PLAYER.WIDTH/2);
     }
     this.move();
   };
   this.render = function() {
+    var air = CONF.GROUND - this.pos.y;
+    var width = map(air, 0, 150, CONF.PLAYER.WIDTH, (CONF.PLAYER.WIDTH*2)/3);
+    var height = map(air, 0, 150, CONF.PLAYER.HEIGHT, CONF.PLAYER.HEIGHT*2);
+
     push();
     noStroke();
     fill(200);
-    translate(this.pos.x, this.pos.y);
-    rect(0, 0, CONF.PLAYER.WIDTH, -CONF.PLAYER.HEIGHT);
+    translate(this.pos.x - (width/2), this.pos.y);
+    rect(0, 0, width, -height);
     pop();
   };
   this.up = function() {
