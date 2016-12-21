@@ -16,7 +16,8 @@ CONF.BOARD = {
 function setup() {
   createCanvas(CONF.WIDTH, CONF.HEIGHT);
   frameRate(60);
-  reset();
+  game = new Game();
+  snake = new Snake();
   lastFrame = millis();
 }
 
@@ -45,14 +46,6 @@ function draw() {
   }
 }
 
-function reset() {
-  hiscore = hiscore > game.score ? hiscore : game.score;
-  snake = new Snake();
-  level = 0
-  game = new Game();
-  game.next_level();
-}
-
 function keyPressed() {
   if (state == "PLAY" || state == "READY") {
     state = "PLAY";
@@ -68,6 +61,7 @@ function keyPressed() {
   }
 
   if (key == ' ' && state == "START" && game.levels) {
+    game.start();
     state = "READY";
   } else if (key == ' ' && state == "PLAY") {
     snake.grow += 1;
@@ -92,8 +86,8 @@ function keyPressed() {
   }
 
   if (keyCode === ENTER && state == "END") {
-    reset();
     state = "READY";
+    game.start();
   }
   /*
   if (key == 'M') {

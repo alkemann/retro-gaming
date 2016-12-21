@@ -2,11 +2,29 @@
 function Game() {
   var g = {
     score: 0,
-    level: 1,
-    blocks: [],
-    next_level: function() {
-      this.level += 1;
+    level: 0,
+    levels: []
+  }
+
+  g.start = function() {
+    this.level = 0;
+    this.score = 0;
+    hiscore = hiscore > this.score ? hiscore : this.score;
+    for (var i = 0; i < this.levels.length; i++) {
+      this.levels[i].reset();
     }
+    this.current_level = this.levels[this.level];
+  }
+  g.next_level = function() {
+    console.log("NEXT LEVEL");
+    this.level += 1;
+    if (!this.levels[this.level]) {
+      return this.over();
+    }
+    this.current_level = this.levels[this.level];
+    snake.pos = this.current_level.start;
+    snake.reset();
+    state = "READY";
   }
     
   g.blocks = [new Block()];
