@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="1" tileheight="1" nextobjectid="34">
- <objectgroup name="0">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="1" tileheight="1" nextobjectid="72">
+ <objectgroup name="0" visible="0" offsetx="-3" offsety="-3">
   <object id="32" type="fruit" x="3" y="15" width="1" height="1">
    <properties>
     <property name="order" type="int" value="0"/>
@@ -9,6 +9,32 @@
   <object id="33" type="fruit" x="16" y="2" width="1" height="1">
    <properties>
     <property name="order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="36" type="start" x="10" y="9" width="1" height="1"/>
+  <object id="37" type="fruit" x="5" y="4" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="39" type="fruit" x="14" y="13" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="40" type="fruit" x="5" y="9" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="41" type="fruit" x="11" y="3" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="42" type="fruit" x="19" y="19" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="6"/>
    </properties>
   </object>
  </objectgroup>
@@ -28,6 +54,26 @@
    </properties>
   </object>
   <object id="24" type="start" x="9" y="9" width="1" height="1"/>
+  <object id="43" type="fruit" x="6" y="11" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="44" type="fruit" x="14" y="4" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="45" type="fruit" x="15" y="5" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="46" type="fruit" x="1" y="18" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="2" visible="0">
   <object id="7" type="wall" x="0" y="0" width="1" height="7"/>
@@ -46,6 +92,70 @@
   <object id="30" type="fruit" x="18" y="9" width="1" height="1">
    <properties>
     <property name="order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="47" type="fruit" x="3" y="9" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="48" type="fruit" x="17" y="2" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="49" type="fruit" x="9" y="11" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="50" type="fruit" x="9" y="8" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="3">
+  <object id="51" type="wall" x="1" y="19" width="18" height="1"/>
+  <object id="52" type="wall" x="0" y="13" width="1" height="7"/>
+  <object id="53" type="wall" x="1" y="0" width="18" height="1"/>
+  <object id="54" type="wall" x="19" y="13" width="1" height="7"/>
+  <object id="55" type="wall" x="0" y="0" width="1" height="7"/>
+  <object id="56" type="start" x="3" y="3" width="1" height="1"/>
+  <object id="57" type="wall" x="19" y="0" width="1" height="7"/>
+  <object id="60" type="wall" x="1" y="6" width="3" height="1"/>
+  <object id="61" type="wall" x="1" y="13" width="3" height="1"/>
+  <object id="63" type="wall" x="15" y="13" width="4" height="1"/>
+  <object id="64" type="wall" x="15" y="6" width="4" height="1"/>
+  <object id="65" type="wall" x="14" y="6" width="1" height="8"/>
+  <object id="66" type="fruit" x="16" y="11" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="67" type="fruit" x="17" y="9" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="68" type="fruit" x="2" y="10" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="69" type="fruit" x="15" y="3" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="70" type="fruit" x="16" y="16" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="71" type="fruit" x="3" y="16" width="1" height="1">
+   <properties>
+    <property name="order" type="int" value="5"/>
    </properties>
   </object>
  </objectgroup>
