@@ -87,6 +87,19 @@ var
     pop();
   },
 
+  wall: function(cord, width, height, color) {
+    push();
+    noFill();
+    noStroke();
+    if (color) {
+        fill(color[0], color[1], color[2]);
+    } else {
+        fill(220);
+    }
+    rect(cord.x, cord.y, CONF.SNAKE.SIZE * (width||1), CONF.SNAKE.SIZE * (height||1));
+    pop();
+  },
+
   music: function() {
 
     // push();
