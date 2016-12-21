@@ -15,6 +15,9 @@ var
         text("JUMP POWER", 20, 20);
         textAlign(RIGHT);
         text("GRAVITY", width - 20, 20);
+        stroke(230);
+        noFill();
+        rect(600, 480, 100, 40);
         pop();
         this.music();
       },
