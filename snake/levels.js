@@ -31,9 +31,9 @@ function Wall(x, y, width, height) {
     width: width,
     height: height,
     check: function() {
-      if ((snake.pos.x >= this.x && snake.pos.x <= this.x + this.width)
+      if ((snake.pos.x >= this.x && snake.pos.x <= this.x + this.width - 1)
           &&
-          (snake.pos.y >= this.y && snake.pos.y <= this.y + this.height)) {
+         (snake.pos.y >= this.y && snake.pos.y <= this.y + this.height - 1)) {
         console.log("Crashed with WALL!");
         console.info(this);
         return true;
