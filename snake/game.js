@@ -25,7 +25,6 @@ function Game() {
             walls[j] = new Wall(od.x, od.y, od.width, od.height);
           }
         }
-        snake.reset();
         g.levels[data.layers[i].name] = new Level(walls, fruits, start_pos);
       }
   }
@@ -37,6 +36,7 @@ function Game() {
       this.levels[i].reset();
     }
     this.current_level = this.levels[this.level];
+    snake.reset(this.current_level.start);
   }
   g.next_level = function() {
     console.log("NEXT LEVEL");
@@ -45,8 +45,7 @@ function Game() {
       return this.over();
     }
     this.current_level = this.levels[this.level];
-    snake.pos = this.current_level.start;
-    snake.reset();
+    snake.reset(this.current_level.start);
     state = "READY";
   }
   g.over = function() {
