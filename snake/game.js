@@ -53,21 +53,20 @@ function Game() {
     state = "END";
   }
   g.check = function() {
-    var hit_block = false,
-        blocks = this.current_level.fruits;
+    var hit_fruit = false;
     for (var i = 0; i < this.current_level.fruits.length; i++) {
       if (this.current_level.fruits[i].eaten) continue;
       var p = this.current_level.fruits[i].pos;
       if (p.x == snake.pos.x && p.y == snake.pos.y) {
-        hit_block = this.current_level.fruits[i];
+        hit_fruit = this.current_level.fruits[i];
       }
       break;
     }
-    if (hit_block) {
-      hit_block.eaten = true;
+    if (hit_fruit) {
+      hit_fruit.eaten = true;
       this.current_level.fruit_left -= 1;
-      this.score += hit_block.reward * snake.tail.length * CONF.SNAKE.SPEED;
-      snake.grow += Math.floor(this.level / 3);
+      this.score += hit_fruit.reward * snake.tail.length * CONF.SNAKE.SPEED;
+      snake.grow += this.level + 1;
       if (this.current_level.fruit_left == 0) {
         this.next_level();
       }
