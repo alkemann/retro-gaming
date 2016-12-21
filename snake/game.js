@@ -39,7 +39,6 @@ function Game() {
     snake.reset(this.current_level.start);
   }
   g.next_level = function() {
-    console.log("NEXT LEVEL");
     this.level += 1;
     if (!this.levels[this.level]) {
       return this.over();
