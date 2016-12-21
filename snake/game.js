@@ -20,7 +20,7 @@ function Game() {
           if (od.type == "start") {
             start = createVector(od.x, od.y);
           } else if (od.type == "fruit") {
-            fruits.push(new Block(1, createVector(od.x, od.y)));
+            fruits.push(new Fruit(1, createVector(od.x, od.y)));
           } else { // assume od.type == "wall"
             walls[j] = new Wall(od.x, od.y, od.width, od.height);
           }

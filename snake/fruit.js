@@ -1,4 +1,4 @@
-function Block(reward, pos) {
+function Fruit(reward, pos) {
   return {
     eaten: false,
     pos: pos || createVector(Math.floor(random(CONF.BOARD.MAX)), Math.floor(random(CONF.BOARD.MAX))),
