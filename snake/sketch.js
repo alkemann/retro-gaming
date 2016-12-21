@@ -67,7 +67,7 @@ function keyPressed() {
     }
   }
 
-  if (key == ' ' && state == "START") {
+  if (key == ' ' && state == "START" && game.levels) {
     state = "READY";
   } else if (key == ' ' && state == "PLAY") {
     snake.grow += 1;
