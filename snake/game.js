@@ -14,19 +14,19 @@ function Game() {
   function reqListener(e) {
       data = JSON.parse(this.responseText);
       for (var i = 0; i < data.layers.length; i++) {
-        var walls = [], fruits = [], start = createVector(width/2, height/2);
+        var walls = [], fruits = [], start_pos = null;
         for (var j = 0; j < data.layers[i].objects.length; j++) {
           var od = data.layers[i].objects[j]; // object data
           if (od.type == "start") {
-            start = createVector(od.x, od.y);
+            start_pos = createVector(od.x, od.y);
           } else if (od.type == "fruit") {
             fruits.push(new Fruit(1, createVector(od.x, od.y)));
           } else { // assume od.type == "wall"
             walls[j] = new Wall(od.x, od.y, od.width, od.height);
           }
         }
-        g.levels[data.layers[i].name] = new Level(walls, fruits, start);
         snake.reset();
+        g.levels[data.layers[i].name] = new Level(walls, fruits, start_pos);
       }
   }
   g.start = function() {

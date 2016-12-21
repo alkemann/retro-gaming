@@ -1,6 +1,6 @@
-function Level(walls, fruits, start) {
+function Level(walls, fruits, starting) {
   return {
-    start: start || createVector(width/2, height/2),
+    start: starting,
     fruits: fruits,
     fruit_left: fruits.length,
     walls: walls,
