@@ -11,14 +11,16 @@ var
         textSize(20);
         noStroke();
         fill(230);
-        rect(0, CONF.GROUND, CONF.WIDTH, 5);
         text("JUMP POWER", 20, 20);
         textAlign(RIGHT);
         text("GRAVITY", width - 20, 20);
-        stroke(230);
         noFill();
-        rect(600, 480, 100, 40);
+        stroke(230, 230, 230, 100);
+        line(0, CONF.GROUND, CONF.WIDTH, CONF.GROUND);
         pop();
+        for (var i = 0; i < platforms.length; i++) {
+            platforms[i].render();
+        }
         this.music();
       },
 

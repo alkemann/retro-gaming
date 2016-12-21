@@ -1,5 +1,5 @@
 var state = "PLAY",
-    player,
+    player, platforms = [],
     score = 0, hiscore = 0,
     DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
@@ -27,6 +27,13 @@ function setup() {
   jumpSlider.position(20, 40);
   gravitySlider = createSlider(0, 100, CONF.GRAVITY);
   gravitySlider.position(600, 40);
+
+  platforms = [
+    new Platform(0, CONF.GROUND, 550, 5),
+    // new Platform(600, 480, 119, 40),
+    // new Platform(200, 400, 50, 5)
+  ];
+
 }
 
 function draw() {

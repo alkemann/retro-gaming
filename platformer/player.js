@@ -1,7 +1,7 @@
 function Player() {
-  this.moveLeft = this.moveRight = null;
+  this.__proto__ = new Movement(); // inherit the movement ability
 
-  this.__proto__ = new Movement();
+  this.moveLeft = this.moveRight = null;
   this.pos = createVector(50, CONF.GROUND - 2);
   this.double = false;
   this.update = function() {
