@@ -4,7 +4,7 @@ var snake, game = {score: 0},
     DIR = { UP: "UP", DOWN: "DOWN", LEFT: "LEFT", RIGHT: "RIGHT"},
     CONF = {
       WIDTH: 720, HEIGHT: 540,
-      SNAKE: { SIZE: 25, SPEED: 20 },
+      SNAKE: { SIZE: 25, SPEED: 12 },
       PLAY: { X: 110, Y: 30, SIZE: 500}
     }
 ;
@@ -74,6 +74,18 @@ function keyPressed() {
     // if (music) song.loop();
     state = "PLAY";
   }
+
+  if (key == '1') {
+    CONF.SNAKE.SPEED = 7;
+    game.start();
+  } else if (key == '2') {
+    CONF.SNAKE.SPEED = 12;
+    game.start();
+  } else if (key == '3') {
+    CONF.SNAKE.SPEED = 20;
+    game.start();
+  }
+
   if (keyCode === ENTER && state == "END") {
     reset();
     state = "PLAY";
