@@ -77,12 +77,15 @@ function keyPressed() {
   if (key == '1') {
     CONF.SNAKE.SPEED = 7;
     game.start();
+    state = "READY";
   } else if (key == '2') {
     CONF.SNAKE.SPEED = 12;
     game.start();
+    state = "READY";
   } else if (key == '3') {
     CONF.SNAKE.SPEED = 20;
     game.start();
+    state = "READY";
   }
 
   if (keyCode === ENTER && state == "END") {
