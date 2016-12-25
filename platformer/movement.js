@@ -9,29 +9,22 @@ function Movement() {
     ground: function() {
       var chosen = null, distance = 0;
       for (var i = 0; i < platforms.length; i++) {
-        var px = platforms[i].pos.x, py = platforms[i].pos.y,
-            width = platforms[i].width, height = platforms[i].height,
-            x = this.pos.x, y = this.pos.y,
-            iter_distance = py - y;
-        if (x < px || x > px + width) {
-          // not the platform, too far away
-          continue;
-        }
-        if (y > py + height) {
-          // not the platform we are too far below
-          continue;
-        }
+        var pground = platforms[i].ground(this.pos),
+            iter_distance = pground - this.pos.y;
+        if (pground === false) continue;
         if (chosen == null && iter_distance >= 0) {
+          cground = pground;
           chosen = platforms[i];
           distance = iter_distance;
           continue;
         }
         if (iter_distance >= 0 && iter_distance < distance) { // absolute?
+          cground = pground;
           chosen = platforms[i];
           distance = iter_distance;
         }
       }
-      return chosen ? chosen.pos.y : CONF.HEIGHT;
+      return chosen ? cground : CONF.HEIGHT;
     },
     move: function() {
       var ground = this.ground();

@@ -2,14 +2,16 @@ function Player() {
   this.__proto__ = new Movement(); // inherit the movement ability
 
   this.moveLeft = this.moveRight = null;
-  this.pos = createVector(50, 500);
+  this.pos = createVector(150, 450);
   this.double = false;
   this.update = function() {
     if (this.moveLeft) {
       this.pos.x -= CONF.PLAYER.SPEED;
+      this.pos.y -= 2;
     }
     if (this.moveRight) {
       this.pos.x += CONF.PLAYER.SPEED;
+      this.pos.y -= 2;
     }
     if (this.pos.x < (CONF.PLAYER.WIDTH/2)) {
       this.pos.x = (CONF.PLAYER.WIDTH/2);
@@ -35,7 +37,7 @@ function Player() {
     pop();
   };
   this.up = function() {
-    if (this.pos.y < this.ground() - 2) {
+    if (this.pos.y < this.ground() - 4  ) {
       if (this.double || CONF.PLAYER.DOUBLE_JUMP == false) {
         return; // No more double jump!
       } else {

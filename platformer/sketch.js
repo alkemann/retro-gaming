@@ -6,13 +6,13 @@ var state = "PLAY",
       WIDTH: 720, HEIGHT: 540,
       GRAVITY: 25,
       PLAYER: {
-        WIDTH: 30, HEIGHT: 60,
+        WIDTH: 26, HEIGHT: 40,
         SPEED: 6,
         JUMP: 450, // Jump power, pixels over 1 second
         DOUBLE_JUMP: true,
       }
     },
-
+    bgimage,
     jumpSlider, gavitySlider
 ;
 
@@ -22,6 +22,7 @@ function setup() {
   frameRate(60);
   lastFrame = millis();
   player = new Player();
+  bgimage = loadImage('donkey.png');
 
   jumpSlider = createSlider(100, 900, CONF.PLAYER.JUMP);
   jumpSlider.position(20, 40);
@@ -29,10 +30,18 @@ function setup() {
   gravitySlider.position(600, 40);
 
   platforms = [
-    new Platform(0, 520, 550, 5),
-    new Platform(600, 480, 119, 40),
-    new Platform(200, 400, 50, 5),
-    new Platform(400, 400, 50, 5)
+    // new Platform(0, 520, 550, 5),
+    // new Platform(600, 480, 119, 40),
+    // new Platform(200, 400, 50, 5),
+    // new Platform(400, 400, 50, 5),
+    new ShapedPlatform([
+      [20, 520], [360, 520], [700, 510],
+      [700, 490], [360, 500], [20, 500]
+    ]),
+    new ShapedPlatform([
+      [45, 432], [632, 452],
+      [632, 432], [45, 412]
+    ]),
   ];
 
 }
@@ -40,7 +49,7 @@ function setup() {
 function draw() {
   deltaTime = (millis() - lastFrame) / 1000;
   lastFrame = millis();
-  background(50);
+  background(bgimage);
   fill(0);
   noStroke();
   textFont("Arial");
