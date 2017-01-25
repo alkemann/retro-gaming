@@ -63,6 +63,10 @@ function ui() {
     reset();
   });
   wSpan = createSpan("Weight: " + CONF.WEIGHT);
+
+  createP("Considered").style("color: red");
+  createP("Candidates").style("color: blue");
+  createP("Goal").style("color: green");
 }
 
 function draw() {

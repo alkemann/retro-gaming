@@ -34,24 +34,22 @@ var
         var pnode = pathfinder.current;
         var b = CONF.BLOCK, a = b / 2;
         while (pnode.parent != null) {
-            // pnode.render(color(20, 150, 20));
             push();
             noFill()
             stroke(100, 200, 100);
-            strokeWeight(10);
+            strokeWeight(4);
             translate(50, 50);
-
             line(pnode.x * b + a, pnode.y * b + a, pnode.parent.x * b + a, pnode.parent.y * b + a);
             pop();
             pnode = pnode.parent;
         }
 
 
-        for (var x = 0; x < pathfinder.map.length; x++) {
-            for (var y = 0; y < pathfinder.map[x].length; y++) {
-                pathfinder.map[x][y].renderCoords();
-            }
-        }
+        // for (var x = 0; x < pathfinder.map.length; x++) {
+        //     for (var y = 0; y < pathfinder.map[x].length; y++) {
+        //         pathfinder.map[x][y].renderCoords();
+        //     }
+        // }
       },
 
       start: function() {

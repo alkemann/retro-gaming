@@ -37,9 +37,11 @@ function Node(x, y, g) {
     translate(50, 50);
     color = color || 200;
     fill(color);
-    stroke(100);
-    var b = CONF.BLOCK;
-    rect(this.x * b, this.y * b, b, b);
+    // stroke(100);
+    noStroke();
+    var b = CONF.BLOCK, w = b * 0.5;
+    // rect(this.x * b, this.y * b, b, b);
+    ellipse(this.x * b + b/2, this.y * b + b/2, w, w);
     pop();
   }
   this.renderCoords = function() {
