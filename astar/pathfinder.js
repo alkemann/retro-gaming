@@ -1,7 +1,8 @@
 function PathFinder(goal) {
   // goal = goal || createVector(CONF.COLS-1, CONF.ROWS-1);
-  goal = createVector(16, 1);
+  goal = createVector(17, 18);
   console.info("SEED: " + window.seed)
+  this.previousSeed = window.seed;
 
 
   this.closedSet = [];
@@ -63,13 +64,9 @@ function PathFinder(goal) {
       neigh.parent = current;
       neigh.setG(tentative_g);
     }
-
-    // console.info(current);
-    // console.info(neighbors);
-    // console.info(this.map);
-    // noLoop();
   }
 
+  // TODO move to Node class so it is only done once
   this.neighbors = function(node) {
     var neighs = [];
     if (node.x > 0) { // add n to left
@@ -92,6 +89,32 @@ function PathFinder(goal) {
       if (n.wall == false)
         neighs.push(n);
     }
+
+    if (CONF.DIAG) {
+
+      if (node.x > 0 && node.y > 0) { // add NW
+        var n = this.map[node.x - 1][node.y - 1];
+        if (n.wall == false)
+          neighs.push(n);
+      }
+      if (node.x < CONF.COLS-1 && node.y > 0) { // add NE
+        var n = this.map[node.x + 1][node.y - 1];
+        if (n.wall == false)
+          neighs.push(n);
+      }
+      if (node.x > 0 && node.y < CONF.ROWS-1) { // add SW
+        var n = this.map[node.x] - 1[node.y - 1];
+        if (n.wall == false)
+          neighs.push(n);
+      }
+      if (node.x < CONF.COLS-1 && node.y < CONF.ROWS-1) { // add SE
+        var n = this.map[node.x + 1][node.y + 1];
+        if (n.wall == false)
+          neighs.push(n);
+      }
+
+    }
+
     return neighs;
   }
 

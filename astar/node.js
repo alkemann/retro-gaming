@@ -11,9 +11,19 @@ function Node(x, y, g) {
 
   this.wall = r() < CONF.WALL_ODDS;
   // heuristic cost estimate
-  this.h = dist(g.x, g.y, this.x, this.y) * 2.5; // Strong distance
-  // this.h = dist(g.x, g.y, this.x, this.y) * 1; // Weak distance
-  // this.h = abs(g.x-this.x) + abs(g.y-this.y) * 2; // Strong Manhatten
+  switch  (CONF.HEURISTIC) {
+    case "MANHATTEN":
+      this.h = abs(g.x-this.x) + abs(g.y-this.y) * CONF.WEIGHT;
+      break;
+    case "DISTANCE":
+    default:
+      this.h = dist(g.x, g.y, this.x, this.y) * CONF.WEIGHT;
+      break;
+  }
+  // this.h = dist(g.x, g.y, this.x, this.y) * 2.5; // Strong distance
+  // this.h = dist(g.x, g.y, this.x, this.y); // distance
+  // 
+  // this.h = abs(g.x-this.x) + abs(g.y-this.y); // Manhatten
   // this.h = abs(g.x-this.x) + abs(g.y-this.y) / 2; // Weak Manhatten
   this.parent = null;
 
@@ -24,7 +34,7 @@ function Node(x, y, g) {
 
   this.render = function(color) {
     push();
-    translate(150, 50);
+    translate(50, 50);
     color = color || 200;
     fill(color);
     stroke(100);
@@ -35,7 +45,7 @@ function Node(x, y, g) {
   this.renderCoords = function() {
     push();
     textSize(8);
-    translate(150, 50);
+    translate(50, 50);
     fill(50);
     noStroke();
     var b = CONF.BLOCK;
