@@ -70,18 +70,21 @@ function ui() {
     reset();
   });
 
+  createSpan("Weight: ");
   wSlider = createSlider(0, 300, CONF.WEIGHT * 100);
   wSlider.changed(function() {
     CONF.WEIGHT = this.value() / 100;
-    wSpan.html("Weight: " + CONF.WEIGHT);
+    wSpan.html(CONF.WEIGHT);
     window.seed = pathfinder.previousSeed;
     reset();
   });
-  wSpan = createSpan("Weight: " + CONF.WEIGHT);
+  wSpan = createSpan(CONF.WEIGHT);
 
-  createP("Considered").style("color: rgb(193, 79, 56)");
-  createP("Candidates").style("color: rgb(249, 145, 140)");
-  createP("Goal").style("color: rgb(232, 217, 201)");
+  createP("SPACE to try new random map").style("color: white");
+
+  createSpan(" Considered ").style("color: rgb(193, 79, 56)");
+  createSpan(" Candidates ").style("color: rgb(249, 145, 140)");
+  createSpan(" Goal ").style("color: rgb(232, 217, 201)");
 }
 
 function draw() {
