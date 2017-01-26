@@ -4,9 +4,9 @@ var state = "PLAY",
     CONF = {
       WIDTH: 720, HEIGHT: 640,
       // BLOCK: 35, ROWS: 12, COLS: 12,
-      BLOCK: 28, ROWS: 20, COLS: 20,
-      WALL_ODDS: 0.25,
-      DIAG: true, HEURISTIC: "MANHATTEN", WEIGHT: 1,
+      BLOCK: 9, ROWS: 65, COLS: 65,
+      WALL_ODDS: 0.35,
+      DIAG: true, HEURISTIC: "DISTANCE", WEIGHT: 0.39,
       COL: {}
     },
     pathfinder = null,
@@ -23,7 +23,7 @@ function reset() {
 
 function setup() {
   createCanvas(CONF.WIDTH, CONF.HEIGHT);
-  frameRate(15);
+  frameRate(20);
   lastFrame = millis();
 
   // my life

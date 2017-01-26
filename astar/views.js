@@ -32,7 +32,7 @@ var
             push();
             noFill()
             stroke(CONF.COL.GOAL);
-            strokeWeight(4);
+            strokeWeight(2);
             translate(50, 50);
             line(pnode.x * b + a, pnode.y * b + a, pnode.parent.x * b + a, pnode.parent.y * b + a);
             pop();

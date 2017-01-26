@@ -1,6 +1,6 @@
 function PathFinder(goal) {
-  // goal = goal || createVector(CONF.COLS-1, CONF.ROWS-1);
-  goal = createVector(17, 18);
+  goal = goal || createVector(CONF.COLS-1, CONF.ROWS-1);
+  // goal = createVector(17, 18);
   console.info("SEED: " + window.seed)
   this.previousSeed = window.seed;
 
