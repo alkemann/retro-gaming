@@ -1,9 +1,4 @@
 var
-    COLORS = {
-        RED: [250, 40, 40],
-        HEAD: [100, 250, 100],
-        TAIL: [50, 180, 50]
-    },
     Views = {
       play: function() {
         push();
@@ -23,20 +18,20 @@ var
             }
         }
         for (var i = 0; i < pathfinder.closedSet.length; i++) {
-            pathfinder.closedSet[i].render(color(200, 40, 40));
+            pathfinder.closedSet[i].render(color(CONF.COL.VISITED));
         }
         for (var i = 0; i < pathfinder.openSet.length; i++) {
-            pathfinder.openSet[i].render(color(40, 40, 200));
+            pathfinder.openSet[i].render(color(CONF.COL.HIGH));
         }
 
-        pathfinder.goal.render(color(40, 200, 40));
+        pathfinder.goal.render(CONF.COL.GOAL);
 
         var pnode = pathfinder.current;
         var b = CONF.BLOCK, a = b / 2;
         while (pnode.parent != null) {
             push();
             noFill()
-            stroke(100, 200, 100);
+            stroke(CONF.COL.GOAL);
             strokeWeight(4);
             translate(50, 50);
             line(pnode.x * b + a, pnode.y * b + a, pnode.parent.x * b + a, pnode.parent.y * b + a);

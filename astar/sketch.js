@@ -6,7 +6,8 @@ var state = "PLAY",
       // BLOCK: 35, ROWS: 12, COLS: 12,
       BLOCK: 28, ROWS: 20, COLS: 20,
       WALL_ODDS: 0.25,
-      DIAG: true, HEURISTIC: "MANHATTEN", WEIGHT: 1
+      DIAG: true, HEURISTIC: "MANHATTEN", WEIGHT: 1,
+      COL: {}
     },
     pathfinder = null,
 
@@ -24,6 +25,20 @@ function setup() {
   createCanvas(CONF.WIDTH, CONF.HEIGHT);
   frameRate(15);
   lastFrame = millis();
+
+  // my life
+  /*
+  CONF.COL.NODE = color(100, 56, 29);
+  CONF.COL.GOAL  = color(255, 110, 89);
+  CONF.COL.HIGH = color(252, 209, 88);
+  CONF.COL.MED  = color(172, 184, 183);
+  */
+  // my life
+  CONF.COL.NODE = color(95, 133, 134);
+  CONF.COL.GOAL  = color(232, 217, 201);
+  CONF.COL.HIGH = color(249, 145, 140);
+  CONF.COL.MED  = color(218, 143, 109);
+  CONF.COL.VISITED = color(193, 79, 56);
 
   ui();
 
@@ -64,18 +79,15 @@ function ui() {
   });
   wSpan = createSpan("Weight: " + CONF.WEIGHT);
 
-  createP("Considered").style("color: red");
-  createP("Candidates").style("color: blue");
-  createP("Goal").style("color: green");
+  createP("Considered").style("color: rgb(193, 79, 56)");
+  createP("Candidates").style("color: rgb(249, 145, 140)");
+  createP("Goal").style("color: rgb(232, 217, 201)");
 }
 
 function draw() {
   deltaTime = (millis() - lastFrame) / 1000;
   lastFrame = millis();
-  background(50);
-  fill(0);
-  noStroke();
-  textFont("Arial");
+  background(20);
 
   if (state == "PLAY") {
     pathfinder.tick();

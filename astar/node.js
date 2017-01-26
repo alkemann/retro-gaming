@@ -35,7 +35,7 @@ function Node(x, y, g) {
   this.render = function(color) {
     push();
     translate(50, 50);
-    color = color || 200;
+    color = color || CONF.COL.NODE;
     fill(color);
     // stroke(100);
     noStroke();
