@@ -6,7 +6,7 @@ const CONF = {
       }
 ;
 
-let state = "PLAY", menu, menu2, tiles
+let state = "PLAY", menu, menu2, tiles, inspector
 ;
 
 function setup() {
@@ -14,7 +14,7 @@ function setup() {
   frameRate(60);
   lastFrame = millis();
 
-
+  inspector = createDiv().id("inspector");
   // menu = new Menu("Main Menu", createVector(50, 50), 400, 300);
   // menu.add(new Item('<div style="width: 100%; height: 150px; background: blue;margin-bottom: 1em;"> </div>'));
   // menu.add(new Button("Win", function() {console.log("WIN!");}));
@@ -63,12 +63,10 @@ function draw() {
 }
 
 function mouseClicked() {
-  let x = mouseX / CONF.WORLD.WIDTH,
-      y = mouseY / CONF.WORLD.HEIGHT;//,
-      // tile = tiles[x][y];
-  // console.info("TILE: " + tile.describe());
-  console.log(x, y);
-  console.log(tiles);
+  let x = Math.ceil(mouseX / CONF.WORLD.WIDTH / 2) - 1,
+      y = Math.ceil(mouseY / CONF.WORLD.HEIGHT / 2) - 1,
+      tile = tiles[x][y];
+  inspector.html("["+x+","+y+"] TILE: " + tile.describe());
 }
 
 function keyPressed() {

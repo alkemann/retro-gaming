@@ -59,10 +59,10 @@ function Tile(pos)
     this.growth_rate = 0;
   }
   this.age = 0.0;
-  this.stage = 0;
+  this.stage = 1;
   this.tick = function() {
       this.age += this.growth_rate;
-      if (this.age > 2) {
+      if (this.age > 10) {
         this.stage += 1;
         this.age = 0.0
       }
@@ -80,7 +80,12 @@ function Tile(pos)
   }
 
   this.describe = function() {
-    return NAMES.TILES[this.type];
+    let out = NAMES.TILES[this.type];
+    if (this.type == TILE_TYPES.FARM) {
+      out += " : " + NAMES.STAGES[this.stage] + "\n" +
+         NAMES.PLANTS[this.seed];
+    }
+    return out;
   }
 
   this.plow = function() {
@@ -92,9 +97,9 @@ function Tile(pos)
     if (this.type != TILE_TYPES.PLOWED) {
       return false;
     }
-
+    this.type = TILE_TYPES.FARM;
     this.seed = seed;
-    this.stage = 0;
+    this.stage = 1;
     this.growth_rate = 0.1; // DEFAULT FOR SEED TYPE
 
     return true;

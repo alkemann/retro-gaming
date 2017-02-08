@@ -35,16 +35,17 @@ function Slot()
 
 		rect(x, y, w, h);
 
-		fill(50);
+		fill(5);
 		textSize(10);
 		textAlign(CENTER);
 
-		let tekst = Math.round(tile.stage) + "\n" +
-			tile.type;
+		let tekst = NAMES.TILES[tile.type];
 		if (tile.type == TILE_TYPES.FARM) {
-			tekst = tekst + "\n" + NAMES.PLANTS[tile.seed];
-			text(tekst, x + (w/2), y + 10);
+			tekst = tekst + "\n" + NAMES.STAGES[tile.stage] +
+			"\n" + NAMES.PLANTS[tile.seed];
+
 		}
+		text(tekst, x + (w/2), y + 10);
 
 		pop();
 	};
