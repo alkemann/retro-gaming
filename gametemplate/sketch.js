@@ -6,7 +6,7 @@ const CONF = {
       }
 ;
 
-let state = "PLAY", menu, menu2, tiles, inspector
+let state = "PLAY", menu, menu2, tiles, inspector, plantPick
 ;
 
 function setup() {
@@ -20,7 +20,19 @@ function setup() {
   // menu.add(new Button("Win", function() {console.log("WIN!");}));
   menu2 = new Panel("Side Menu", "actions");
   menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
-  menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
+  menu2.add(new Image("corn.png", function() {
+    plantPick = PLANTS.CORN;
+    console.log("Du vil ha corn?!");}));
+  menu2.add(new Image("wheat.png", function() {
+    plantPick = PLANTS.WHEAT;
+    console.log("Du vil ha wheat?!");}));
+  menu2.add(new Image("rhye.png", function() {
+    plantPick = PLANTS.RHYE;
+    console.log("Du vil ha rhye?!");}));
+  menu2.add(new Image("melon.png", function() {
+    plantPick = PLANTS.MELON;
+    console.log("Du vil ha melon?!");}));
+
 
   tiles = [];
   for (var x = 0; x < CONF.WORLD.WIDTH; x++) {
@@ -75,7 +87,7 @@ function mouseClicked() {
     }
 
     if (tile.type == TILE_TYPES.PLOWED){
-          tile.plant(Math.round(random(1,4)));
+          tile.plant(plantPick);
 
     }
     if (tile.type == TILE_TYPES.DIRT){
