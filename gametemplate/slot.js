@@ -40,12 +40,16 @@ function Slot()
 		textAlign(CENTER);
 
 		let tekst = NAMES.TILES[tile.type];
+		if (tile.type == TILE_TYPES.ROCK || tile.type == TILE_TYPES.WATER){
+			fill(240);
+		}
 		if (tile.type == TILE_TYPES.FARM) {
 			tekst = tekst + "\n" + NAMES.STAGES[tile.stage] +
 			"\n" + NAMES.PLANTS[tile.seed];
 
 		}
 		text(tekst, x + (w/2), y + 10);
+		fill(5);
 
 		pop();
 	};
