@@ -8,7 +8,7 @@ const TILE_TYPES = {
   },
   PLANTS = {
     WHEAT: 1,
-    WATERMELON: 2,
+    MELON: 2,
     RHYE: 3,
     CORN: 4
   },
@@ -54,7 +54,7 @@ function Tile(pos)
   this.type = Math.round(random(1, 6));
   if (this.type == TILE_TYPES.FARM) {
     this.seed = Math.round(random(1, 4));
-    this.growth_rate = 0.02;
+    this.growth_rate = 0.05;
   } else {
     this.growth_rate = 0;
   }
@@ -75,7 +75,7 @@ function Tile(pos)
   this.reset = function() {
     this.seed = null;
     this.stage = 0;
-    this.growth_rate = 0;1
+    this.growth_rate = 0;
     this.type = TILE_TYPES.DIRT;
   }
 
@@ -104,7 +104,7 @@ function Tile(pos)
     this.type = TILE_TYPES.FARM;
     this.seed = seed;
     this.stage = 1;
-    this.growth_rate = 0.1; // DEFAULT FOR SEED TYPE
+    this.growth_rate = 0.05; // DEFAULT FOR SEED TYPE
 
     return true;
   }
