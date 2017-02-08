@@ -89,7 +89,7 @@ function Tile(pos)
   }
 
   this.harvest = function() {
-    barn[this.type] +=1;
+    barn[this.seed] +=1;
     this.reset();
   }
 
