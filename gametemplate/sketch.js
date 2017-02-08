@@ -1,7 +1,7 @@
 const CONF = {
-        WIDTH: 800, HEIGHT: 800,
+        WIDTH: 600, HEIGHT: 600,
         WORLD: {
-          WIDTH: 20, HEIGHT: 20,
+          WIDTH: 10, HEIGHT: 10,
         }
       }
 ;
@@ -14,15 +14,13 @@ function setup() {
   frameRate(60);
   lastFrame = millis();
 
-  inspector = createDiv().id("inspector");
+  inspector = createDiv(" ").id("inspector");
   // menu = new Menu("Main Menu", createVector(50, 50), 400, 300);
   // menu.add(new Item('<div style="width: 100%; height: 150px; background: blue;margin-bottom: 1em;"> </div>'));
   // menu.add(new Button("Win", function() {console.log("WIN!");}));
-  // menu2 = new Menu("Side Menu", createVector(550, 50), 400, 300);
-  // menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
-  // menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
-  // menu2.add(new Button("Lose", function() {console.log("Lost!");}));
-  // menu2.add(new Button("Tie", function() {console.log("Tied!");}));
+  menu2 = new Panel("Side Menu", "actions");
+  menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
+  menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
 
   tiles = [];
   for (var x = 0; x < CONF.WORLD.WIDTH; x++) {
@@ -63,25 +61,28 @@ function draw() {
 }
 
 function mouseClicked() {
-  let x = Math.ceil(mouseX / CONF.WORLD.WIDTH / 2) - 1,
-      y = Math.ceil(mouseY / CONF.WORLD.HEIGHT / 2) - 1,
-      tile = tiles[x][y];
-  inspector.html("["+x+","+y+"] TILE: " + tile.describe());
+  if (mouseX > 0 && mouseX < CONF.WIDTH && mouseY > 0 && mouseY < CONF.HEIGHT) {
+    let w = CONF.WIDTH / CONF.WORLD.WIDTH,
+        h = CONF.HEIGHT / CONF.WORLD.HEIGHT,
+        x = Math.floor(mouseX / w),
+        y = Math.floor(mouseY / h),
+        tile = tiles[x][y];
+    inspector.html("["+x+","+y+"] TILE: " + tile.describe());
+    if (tile.stage == STAGES.MATURE){
+      console.log("WIN");
+      tile.dirt();
+      return;
+    }
 
-  if (tile.stage == STAGES.MATURE){
-    console.log("WIN");
-    tile.dirt();
-    return;
+    if (tile.type == TILE_TYPES.PLOWED){
+          tile.plant(Math.round(random(1,4)));
+
+    }
+    if (tile.type == TILE_TYPES.DIRT){
+        tile.plow();
+    }
+
   }
-
-  if (tile.type == TILE_TYPES.PLOWED){
-        tile.plant(Math.round(random(1,4)));
-
-}
-  if (tile.type == TILE_TYPES.DIRT){
-      tile.plow();
-  }
-
 }
 
 function keyPressed() {

@@ -26,12 +26,23 @@ function Menu(name, pos, width, height)
 	}
 
 	const m = this;
-
 	let header = createDiv('<h1>'+name+'</h1></div').class("header"),
 		closer = createButton('X').class('closer').mouseClicked(function() {m.hide();});
 	header.child(closer);
 	this.element.child(header);
+}
 
+function Panel(name, id, cssclass)
+{
+	this.name = name;
+	this.element = createDiv('').class(cssclass).id(id);
+	this.elements = [];
+
+	this.add = function(item) {
+		this.elements.push(item);
+		item.menu = this;
+		this.element.child(item.element);
+	}
 }
 
 function Button(name, callback, cssclass = 'button')
