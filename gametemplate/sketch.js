@@ -67,6 +67,21 @@ function mouseClicked() {
       y = Math.ceil(mouseY / CONF.WORLD.HEIGHT / 2) - 1,
       tile = tiles[x][y];
   inspector.html("["+x+","+y+"] TILE: " + tile.describe());
+
+  if (tile.stage == STAGES.MATURE){
+    console.log("WIN");
+    tile.dirt();
+    return;
+  }
+
+  if (tile.type == TILE_TYPES.PLOWED){
+        tile.plant(Math.round(random(1,4)));
+
+}
+  if (tile.type == TILE_TYPES.DIRT){
+      tile.plow();
+  }
+
 }
 
 function keyPressed() {

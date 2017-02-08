@@ -74,8 +74,9 @@ function Tile(pos)
 
   this.reset = function() {
     this.seed = null;
+    console.log("telt");
     this.stage = 0;
-    this.growth_rate = 0;
+    this.growth_rate = 0;1
     this.type = TILE_TYPES.DIRT;
   }
 
@@ -86,6 +87,11 @@ function Tile(pos)
          NAMES.PLANTS[this.seed];
     }
     return out;
+  }
+
+  this.dirt = function() {
+    console.log("apekatt");
+    this.reset();
   }
 
   this.plow = function() {
