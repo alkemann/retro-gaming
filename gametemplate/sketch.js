@@ -1,7 +1,7 @@
 const CONF = {
-        WIDTH: 500, HEIGHT: 500,
+        WIDTH: 800, HEIGHT: 800,
         WORLD: {
-          WIDTH: 10, HEIGHT: 10,
+          WIDTH: 20, HEIGHT: 20,
         }
       }
 ;
@@ -13,14 +13,16 @@ function setup() {
   createCanvas(CONF.WIDTH, CONF.HEIGHT);
   frameRate(60);
   lastFrame = millis();
-  menu = new Menu("Main Menu", createVector(50, 50), 400, 300);
-  menu.add(new Item('<div style="width: 100%; height: 150px; background: blue;margin-bottom: 1em;"> </div>'));
-  menu.add(new Button("Win", function() {console.log("WIN!");}));
-  menu2 = new Menu("Side Menu", createVector(550, 50), 400, 300);
-  menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
-  menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
-  menu2.add(new Button("Lose", function() {console.log("Lost!");}));
-  menu2.add(new Button("Tie", function() {console.log("Tied!");}));
+
+
+  // menu = new Menu("Main Menu", createVector(50, 50), 400, 300);
+  // menu.add(new Item('<div style="width: 100%; height: 150px; background: blue;margin-bottom: 1em;"> </div>'));
+  // menu.add(new Button("Win", function() {console.log("WIN!");}));
+  // menu2 = new Menu("Side Menu", createVector(550, 50), 400, 300);
+  // menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
+  // menu2.add(new Image("tractor.jpg", function() {console.log("Du vil ha Traktor?!");}));
+  // menu2.add(new Button("Lose", function() {console.log("Lost!");}));
+  // menu2.add(new Button("Tie", function() {console.log("Tied!");}));
 
   tiles = [];
   for (var x = 0; x < CONF.WORLD.WIDTH; x++) {
@@ -42,6 +44,11 @@ function draw() {
   if (state == "PLAY") {
     Views.play();
     // menu.show();
+    for (var x = 0; x < CONF.WORLD.WIDTH; x++) {
+      for (var y = 0; y < CONF.WORLD.HEIGHT; y++) {
+        tiles[x][y].tick();
+      }
+    }
   } else if (state == "READY") {
     Views.play();
   } else if (state == "START") {
@@ -53,6 +60,15 @@ function draw() {
   } else {
     console.error("UNKNOWN STATE: " + state);
   }
+}
+
+function mouseClicked() {
+  let x = mouseX / CONF.WORLD.WIDTH,
+      y = mouseY / CONF.WORLD.HEIGHT;//,
+      // tile = tiles[x][y];
+  // console.info("TILE: " + tile.describe());
+  console.log(x, y);
+  console.log(tiles);
 }
 
 function keyPressed() {
