@@ -6,7 +6,7 @@ const CONF = {
       }
 ;
 
-let state = "PLAY", menu, menu2, tiles, inspector, plantPick
+let state = "PLAY", menu, menu2, tiles, inspector, plantPick = 1, barn={}
 ;
 
 function setup() {
@@ -32,7 +32,13 @@ function setup() {
   menu2.add(new Image("melon.png", function() {
     plantPick = PLANTS.MELON;
     console.log("Du vil ha melon?!");}));
+  menu2.add(new Image("barn.png", function() {
+    console.log(barn);}));
 
+  barn[PLANTS.CORN]=0;
+  barn[PLANTS.WHEAT]=0;
+  barn[PLANTS.RHYE]=0;
+  barn[PLANTS.MELON]=0;
 
   tiles = [];
   for (var x = 0; x < CONF.WORLD.WIDTH; x++) {
@@ -82,7 +88,7 @@ function mouseClicked() {
     inspector.html("["+x+","+y+"] TILE: " + tile.describe());
     if (tile.stage == STAGES.MATURE){
       console.log("WIN");
-      tile.dirt();
+      tile.harvest();
       return;
     }
 
